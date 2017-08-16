@@ -50,7 +50,9 @@ class Region:
 			assert(len(self.code) == 2)
 
 	def _clean_name(self, name):
-		return re.sub(r'\(.*?\)|\[.*?\]|\*', '', name).strip()
+		name = re.sub(r'\(.*?\)|\[.*?\]|\*', '', name).strip()
+		name = re.sub(r'[ \t]+', ' ', name)
+		return name
 
 	def __repr__(self):
 		return 'Region<code="%s", parent="%s", name="%s">' % (self.code, self.parent, self.name)
